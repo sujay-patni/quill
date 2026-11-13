@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Android themed-icon layer: one colour; the system tints it. Gaps keep the nib readable. -->
+  <defs>
+    <path id="nib" d="M440 210 L584 210 L584 292 Q584 366 512 494 Q440 366 440 292 Z"/>
+    <mask id="gap"><rect width="1024" height="1024" fill="#fff"/><use href="#nib" fill="#000" stroke="#000" stroke-width="36" stroke-linejoin="round"/></mask>
+    <mask id="slit"><rect width="1024" height="1024" fill="#fff"/><path d="M512 344 L512 486" stroke="#000" stroke-width="14" stroke-linecap="round"/><circle cx="512" cy="338" r="19" fill="#000"/></mask>
+  </defs>
+  <g transform="translate(512 512) scale(0.82) translate(-512 -552)" fill="#000">
+    <path mask="url(#gap)" d="M512 728 C430 676 330 666 238 688 L238 404 C330 384 430 394 512 446 C594 394 694 384 786 404 L786 688 C694 666 594 676 512 728 Z"/>
+    <use href="#nib" mask="url(#slit)"/>
+  </g>
+</svg>

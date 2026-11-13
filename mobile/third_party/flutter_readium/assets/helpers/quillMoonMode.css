@@ -1,0 +1,49 @@
+/*
+ * Quill patch: "book design off" reads like Moon Reader.
+ *
+ * Readium's publisher-styles switch only lets the user's font, size, spacing and alignment win;
+ * the rest of the book's CSS still applies. Moon Reader renders with a simpler engine that
+ * ignores generated content, small caps, forced block heights and publisher fonts, and keeps a
+ * book's centred lines centred while justifying ordinary text. These rules reproduce that.
+ * Readium marks the mode on the root ("readium-advanced-on" appears only while publisher styles
+ * are off), so "book design on" is untouched and shows the book's own CSS.
+ */
+
+/* Justify ordinary text without overriding the book's centred/right-aligned blocks (Quill no
+   longer sends Readium's textAlign, which forces every paragraph). quillMoonMode.js marks the
+   blocks the book aligns to the start. */
+:root[style*="readium-advanced-on"] body,
+:root[style*="readium-advanced-on"] .quill-justify {
+  text-align: justify !important;
+}
+
+/* No CSS-generated text such as "[ " … " ]" around headings. Tables keep the plugin's labels. */
+:root[style*="readium-advanced-on"] body *:not(td):not(th)::before,
+:root[style*="readium-advanced-on"] body *:not(td):not(th)::after {
+  content: none !important;
+}
+
+/* One reading font and no small caps, including the book's ::first-line styling. */
+:root[style*="readium-advanced-on"] body *:not(pre):not(code):not(kbd):not(samp) {
+  font-family: inherit !important;
+}
+
+:root[style*="readium-advanced-on"] body *,
+:root[style*="readium-advanced-on"] body *::first-line {
+  font-variant: normal !important;
+}
+
+:root[style*="readium-advanced-on"] body *::first-line {
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+}
+
+/* No forced empty space from min-height (e.g. chapter headings sized to a third of a page). */
+:root[style*="readium-advanced-on"] body * {
+  min-height: 0 !important;
+}
+
+/* An empty paragraph (e.g. Calibre's "implicit-break") is a blank line in Moon Reader. */
+:root[style*="readium-advanced-on"] body p:empty {
+  min-height: 1lh !important;
+}
