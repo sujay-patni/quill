@@ -1,6 +1,8 @@
 # Changelog
 
-APKs and checksums are on the [Releases](https://github.com/sujay-patni/quill/releases) page.
+APKs and checksums are on the [Releases](https://github.com/sujay-patni/quill/releases) page. Full
+release notes: [0.2.1](docs/releases/0.2.1.md), [0.2.0](docs/releases/0.2.0.md),
+[0.1.0](docs/releases/0.1.0.md).
 
 ## 0.2.1 — 2026-11-13
 
